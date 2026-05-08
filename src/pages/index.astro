@@ -73,6 +73,45 @@ const caseNotes = [
     metrics: ['Landing per audience', 'CRM per canale', 'Report settimanale'],
   },
 ];
+
+const menuLinks = [
+  { label: 'Metodo', href: '#metodo', hint: 'Perché non partiamo dalle ads' },
+  { label: 'Proof stack', href: '#proof-stack', hint: 'Come filtriamo richieste inutili' },
+  { label: 'Sistema', href: '#sistema', hint: 'Il percorso da clic a vendita' },
+  { label: 'Economia', href: '#economia', hint: 'Margine prima del CPL' },
+  { label: 'Audit', href: '#contact', hint: '30 minuti, materiale usabile' },
+];
+
+const caseReel = [
+  {
+    number: '01',
+    title: 'Showroom premium',
+    tag: 'Alluminio / legno-alluminio',
+    text: 'Una pagina verticale non deve dire “siamo bravi”. Deve far capire perché il sopralluogo vale tempo, soldi e fiducia.',
+    metric: 'budget minimo + materiale + urgenza',
+  },
+  {
+    number: '02',
+    title: 'Installatore locale',
+    tag: 'PVC / sostituzione casa',
+    text: 'La creatività funziona quando taglia rumore: zona servita, numero infissi e prossima azione chiara.',
+    metric: 'meno richieste fuori zona',
+  },
+  {
+    number: '03',
+    title: 'Rete posa certificata',
+    tag: 'B2B / privati / studi tecnici',
+    text: 'Tre pubblici diversi non entrano nella stessa pagina senza farsi male. Qui si separano messaggio, form e follow-up.',
+    metric: 'pipeline per audience',
+  },
+];
+
+const manifestoLines = [
+  'Intento prima del traffico',
+  'Prova prima della promessa',
+  'Sopralluoghi prima dei lead',
+  'Margine prima del rumore',
+];
 ---
 
 <BaseLayout title="Marketing per infissi" description={description} site={site} schema={schema} ogImage={ogImage} preloadImage={heroImage}>
@@ -86,13 +125,47 @@ const caseNotes = [
     <nav class="desktop-nav" aria-label="Navigazione principale">
       {nav.map((item) => <a href={item.href}>{item.label}</a>)}
     </nav>
-    <a class="nav-cta" href="#contact">Audit gratuito</a>
+    <div class="nav-actions">
+      <button class="menu-toggle" type="button" aria-controls="menuPanel" aria-expanded="false">
+        <span>Menu</span>
+        <i aria-hidden="true"></i>
+      </button>
+      <a class="nav-cta" href="#contact">Audit gratuito</a>
+    </div>
   </header>
+
+  <div class="menu-panel" id="menuPanel" aria-hidden="true">
+    <div class="menu-scrim" data-menu-close></div>
+    <div class="menu-panel-inner" role="dialog" aria-modal="true" aria-label="Menu di navigazione">
+      <div class="menu-top">
+        <img src={logoImage} alt="M2E Marketing" width="760" height="326" />
+        <button class="menu-close" type="button" data-menu-close>Chiudi</button>
+      </div>
+      <nav class="menu-links" aria-label="Menu principale">
+        {menuLinks.map((item, index) => (
+          <a href={item.href} data-menu-close>
+            <span>{String(index + 1).padStart(2, '0')}</span>
+            <strong>{item.label}</strong>
+            <em>{item.hint}</em>
+          </a>
+        ))}
+      </nav>
+      <div class="menu-aside">
+        <p>Mix operativo: rigore da studio digitale, voce da brand che non ha paura di essere ricordato.</p>
+        <a href="#contact" data-menu-close>Richiedi audit</a>
+      </div>
+    </div>
+  </div>
 
   <main id="top">
     <section class="hero" aria-labelledby="hero-title">
       <div class="hero-media" style={`--hero-image: url('${heroImage}')`} aria-hidden="true"></div>
       <div class="hero-overlay"></div>
+      <div class="hero-tokens" aria-hidden="true">
+        <span class="token token-one">Intento</span>
+        <span class="token token-two">Sopralluogo</span>
+        <span class="token token-three">ROI</span>
+      </div>
       <div class="hero-content">
         <p class="eyebrow">Per showroom, produttori e installatori di serramenti</p>
         <h1 id="hero-title" class="display">Pipeline di preventivi per serramentisti</h1>
@@ -116,12 +189,16 @@ const caseNotes = [
 
     <section class="strip" aria-label="Posizionamento">
       <div class="strip-inner">
-        <span>Non vendiamo "visibilità".</span>
-        <span>Costruiamo un sistema commerciale misurabile per richieste ad alto valore.</span>
+        <div class="strip-marquee">
+          <span>Non vendiamo "visibilità".</span>
+          <span>Costruiamo un sistema commerciale misurabile.</span>
+          <span>Richieste ad alto valore, non rumore elegante.</span>
+          <span>Non vendiamo "visibilità".</span>
+        </div>
       </div>
     </section>
 
-    <section class="section evidence" aria-label="Prova operativa">
+    <section class="section evidence" id="proof-stack" aria-label="Prova operativa">
       <div class="container evidence-grid">
         <div>
           <p class="eyebrow">Proof stack</p>
@@ -141,6 +218,25 @@ const caseNotes = [
       </div>
     </section>
 
+    <section class="case-reel" aria-label="Casi e direzioni creative">
+      <div class="case-reel-head">
+        <p class="eyebrow">Case reel</p>
+        <h2 class="display">Tre situazioni, tre pagine diverse. Altrimenti è arredamento.</h2>
+        <span>Scorri i casi</span>
+      </div>
+      <div class="case-track" tabindex="0" aria-label="Scorri i casi">
+        {caseReel.map((item) => (
+          <article class="case-panel">
+            <span>{item.number}</span>
+            <p>{item.tag}</p>
+            <h3>{item.title}</h3>
+            <strong>{item.metric}</strong>
+            <em>{item.text}</em>
+          </article>
+        ))}
+      </div>
+    </section>
+
     <section class="section thesis" id="metodo">
       <div class="container thesis-grid">
         <div>
@@ -154,6 +250,15 @@ const caseNotes = [
           <p>
             Per questo il sito non sembra una pagina da agenzia generica. Sembra un banco vendita digitale: parla di prodotti, zone, sopralluoghi, margine e follow-up.
           </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="manifesto" aria-label="Manifesto operativo">
+      <div class="manifesto-inner">
+        <p class="eyebrow">Full of margin</p>
+        <div class="manifesto-lines">
+          {manifestoLines.map((line) => <span>{line}</span>)}
         </div>
       </div>
     </section>
@@ -417,6 +522,35 @@ const caseNotes = [
   [leadRange, visitRange, ticketRange].forEach((input) => input?.addEventListener('input', updateCalculator));
   updateCalculator();
 
+  const menuPanel = document.getElementById('menuPanel');
+  const menuToggle = document.querySelector<HTMLButtonElement>('.menu-toggle');
+  const menuClosers = document.querySelectorAll<HTMLElement>('[data-menu-close]');
+
+  function setMenu(open: boolean) {
+    if (!menuPanel || !menuToggle) return;
+    menuPanel.setAttribute('aria-hidden', String(!open));
+    menuToggle.setAttribute('aria-expanded', String(open));
+    document.body.classList.toggle('menu-open', open);
+  }
+
+  menuToggle?.addEventListener('click', () => setMenu(menuPanel?.getAttribute('aria-hidden') !== 'false'));
+  menuClosers.forEach((closer) => closer.addEventListener('click', () => setMenu(false)));
+  document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape') setMenu(false);
+  });
+
+  const hero = document.querySelector<HTMLElement>('.hero');
+  const tokens = document.querySelectorAll<HTMLElement>('.token');
+  hero?.addEventListener('pointermove', (event) => {
+    const rect = hero.getBoundingClientRect();
+    const x = (event.clientX - rect.left) / rect.width - 0.5;
+    const y = (event.clientY - rect.top) / rect.height - 0.5;
+    tokens.forEach((token, index) => {
+      const depth = (index + 1) * 10;
+      token.style.transform = `translate3d(${x * depth}px, ${y * depth}px, 0) rotate(${index % 2 ? '-7deg' : '6deg'})`;
+    });
+  });
+
   const auditForm = document.getElementById('auditForm') as HTMLFormElement | null;
   auditForm?.addEventListener('submit', (event) => {
     event.preventDefault();
@@ -447,6 +581,10 @@ const caseNotes = [
   :global(body) {
     background: #f7f4ee;
     color: #152323;
+  }
+
+  :global(body.menu-open) {
+    overflow: hidden;
   }
 
   .site-header {
@@ -520,7 +658,6 @@ const caseNotes = [
   }
 
   .nav-cta {
-    justify-self: end;
     display: inline-flex;
     align-items: center;
     justify-content: center;
@@ -530,6 +667,154 @@ const caseNotes = [
     color: #fffaf0;
     font-size: 0.9rem;
     font-weight: 720;
+  }
+
+  .nav-actions {
+    justify-self: end;
+    display: flex;
+    align-items: center;
+    gap: 0.65rem;
+  }
+
+  .menu-toggle,
+  .menu-close {
+    min-height: 44px;
+    border: 1px solid rgba(255, 255, 255, 0.45);
+    background: rgba(255, 255, 255, 0.08);
+    color: #fffaf0;
+    font: inherit;
+    font-weight: 780;
+    cursor: pointer;
+  }
+
+  .menu-toggle {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.65rem;
+    padding: 0.7rem 0.95rem;
+  }
+
+  .menu-toggle i {
+    position: relative;
+    width: 1.2rem;
+    height: 0.72rem;
+    border-top: 2px solid currentColor;
+    border-bottom: 2px solid currentColor;
+  }
+
+  .menu-panel {
+    position: fixed;
+    inset: 0;
+    z-index: 80;
+    pointer-events: none;
+    color: #fffaf0;
+  }
+
+  .menu-panel[aria-hidden='false'] {
+    pointer-events: auto;
+  }
+
+  .menu-scrim {
+    position: absolute;
+    inset: 0;
+    background: rgba(3, 10, 10, 0);
+    transition: background 260ms ease;
+  }
+
+  .menu-panel[aria-hidden='false'] .menu-scrim {
+    background: rgba(3, 10, 10, 0.56);
+  }
+
+  .menu-panel-inner {
+    position: absolute;
+    inset: 0 0 0 auto;
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    width: min(100%, 760px);
+    padding: clamp(1.1rem, 3vw, 2.4rem);
+    background: #050707;
+    border-left: 1px solid rgba(255, 250, 240, 0.16);
+    transform: translateX(100%);
+    transition: transform 360ms cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .menu-panel[aria-hidden='false'] .menu-panel-inner {
+    transform: translateX(0);
+  }
+
+  .menu-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+  }
+
+  .menu-top img {
+    width: 10.8rem;
+    max-width: 45vw;
+    height: auto;
+    background: #fff;
+    padding: 0.35rem 0.65rem;
+  }
+
+  .menu-close {
+    padding: 0.7rem 0.95rem;
+  }
+
+  .menu-links {
+    display: grid;
+    align-content: center;
+    margin-block: clamp(2rem, 7vh, 5rem);
+    border-top: 1px solid rgba(255, 250, 240, 0.2);
+  }
+
+  .menu-links a {
+    display: grid;
+    grid-template-columns: 3rem minmax(0, 0.88fr) minmax(14rem, 1fr);
+    gap: clamp(0.8rem, 3vw, 2rem);
+    align-items: baseline;
+    padding: clamp(1rem, 3vw, 1.35rem) 0;
+    border-bottom: 1px solid rgba(255, 250, 240, 0.2);
+    color: #fffaf0;
+  }
+
+  .menu-links span,
+  .menu-links em {
+    color: rgba(255, 250, 240, 0.56);
+    font-size: 0.82rem;
+    font-style: normal;
+  }
+
+  .menu-links strong {
+    font-family: var(--font-display);
+    font-size: clamp(2.4rem, 7vw, 5.5rem);
+    font-weight: 700;
+    line-height: 0.88;
+  }
+
+  .menu-links a:hover strong {
+    color: #f2b84b;
+  }
+
+  .menu-aside {
+    display: flex;
+    justify-content: space-between;
+    gap: 1.5rem;
+    align-items: end;
+    color: rgba(255, 250, 240, 0.72);
+  }
+
+  .menu-aside p {
+    max-width: 32rem;
+    line-height: 1.55;
+  }
+
+  .menu-aside a {
+    flex: 0 0 auto;
+    padding: 0.85rem 1rem;
+    background: #f2b84b;
+    color: #050707;
+    font-weight: 820;
   }
 
   .hero {
@@ -561,9 +846,52 @@ const caseNotes = [
       linear-gradient(0deg, rgba(10, 28, 29, 0.82) 0%, rgba(10, 28, 29, 0) 36%);
   }
 
+  .hero-tokens {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    pointer-events: none;
+  }
+
+  .token {
+    position: absolute;
+    display: inline-flex;
+    min-height: 2.8rem;
+    align-items: center;
+    justify-content: center;
+    padding: 0.65rem 0.9rem;
+    border: 1px solid rgba(255, 250, 240, 0.28);
+    background: rgba(5, 7, 7, 0.54);
+    color: #f2b84b;
+    font-size: 0.75rem;
+    font-weight: 850;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    backdrop-filter: blur(10px);
+    transition: transform 130ms ease-out;
+  }
+
+  .token-one {
+    right: 30%;
+    top: 20%;
+    transform: rotate(6deg);
+  }
+
+  .token-two {
+    right: 8%;
+    bottom: 24%;
+    transform: rotate(-7deg);
+  }
+
+  .token-three {
+    left: 49%;
+    bottom: 12%;
+    transform: rotate(5deg);
+  }
+
   .hero-content {
     position: relative;
-    z-index: 1;
+    z-index: 2;
     width: min(100%, 1180px);
     padding: clamp(7rem, 14vh, 11rem) clamp(1.25rem, 5vw, 4rem) clamp(2rem, 6vh, 4rem);
   }
@@ -703,19 +1031,40 @@ const caseNotes = [
   }
 
   .strip {
-    background: #e2f0ec;
+    background: #f2b84b;
     border-block: 1px solid rgba(16, 34, 35, 0.14);
+    overflow: hidden;
   }
 
   .strip-inner {
-    width: min(100%, 1180px);
-    margin: 0 auto;
-    padding: 1rem clamp(1.25rem, 5vw, 4rem);
-    display: flex;
-    gap: 1rem;
-    justify-content: space-between;
+    width: 100%;
+    padding: 0;
     color: #102223;
     font-weight: 760;
+  }
+
+  .strip-marquee {
+    display: flex;
+    width: max-content;
+    animation: marquee 26s linear infinite;
+  }
+
+  .strip-marquee span {
+    display: inline-flex;
+    align-items: center;
+    min-height: 3.2rem;
+    padding-inline: clamp(1.5rem, 5vw, 4rem);
+    white-space: nowrap;
+  }
+
+  @keyframes marquee {
+    from {
+      transform: translateX(0);
+    }
+
+    to {
+      transform: translateX(-50%);
+    }
   }
 
   .section {
@@ -802,6 +1151,138 @@ const caseNotes = [
     color: #263837;
     font-size: 0.78rem;
     font-weight: 760;
+  }
+
+  .case-reel {
+    background: #050707;
+    color: #fffaf0;
+    padding: clamp(4rem, 8vw, 7rem) 0;
+    overflow: hidden;
+  }
+
+  .case-reel-head {
+    width: min(100%, 1180px);
+    margin-inline: auto;
+    padding-inline: clamp(1.25rem, 5vw, 4rem);
+  }
+
+  .case-reel-head h2 {
+    max-width: 12ch;
+    margin-top: 0.7rem;
+    font-size: clamp(3rem, 8vw, 8.2rem);
+    line-height: 0.86;
+    color: #fffaf0;
+  }
+
+  .case-reel-head > span {
+    display: inline-flex;
+    margin-top: 1rem;
+    padding: 0.45rem 0.6rem;
+    border: 1px solid rgba(255, 250, 240, 0.24);
+    color: rgba(255, 250, 240, 0.66);
+    font-size: 0.78rem;
+    font-weight: 820;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .case-track {
+    display: grid;
+    grid-auto-flow: column;
+    grid-auto-columns: minmax(320px, 42vw);
+    gap: 1px;
+    margin-top: clamp(2rem, 5vw, 3.5rem);
+    padding-inline: max(clamp(1.25rem, 5vw, 4rem), calc((100vw - 1180px) / 2 + 4rem));
+    overflow-x: auto;
+    scrollbar-color: #f2b84b rgba(255, 250, 240, 0.12);
+    scroll-snap-type: x mandatory;
+  }
+
+  .case-panel {
+    min-height: 30rem;
+    display: grid;
+    align-content: space-between;
+    padding: clamp(1.2rem, 3vw, 2rem);
+    border: 1px solid rgba(255, 250, 240, 0.2);
+    background:
+      linear-gradient(135deg, rgba(242, 184, 75, 0.15), rgba(46, 129, 118, 0.06)),
+      #0c1515;
+    scroll-snap-align: start;
+  }
+
+  .case-panel:nth-child(2) {
+    background:
+      linear-gradient(135deg, rgba(46, 129, 118, 0.24), rgba(242, 184, 75, 0.06)),
+      #101b1b;
+  }
+
+  .case-panel span {
+    color: #f2b84b;
+    font-weight: 850;
+  }
+
+  .case-panel p {
+    color: rgba(255, 250, 240, 0.58);
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    font-size: 0.74rem;
+    font-weight: 820;
+  }
+
+  .case-panel h3 {
+    max-width: 10ch;
+    font-family: var(--font-display);
+    font-size: clamp(2.55rem, 4.8vw, 5.15rem);
+    line-height: 0.88;
+    color: #fffaf0;
+    overflow-wrap: break-word;
+  }
+
+  .case-panel strong {
+    width: fit-content;
+    padding: 0.45rem 0.58rem;
+    background: #f2b84b;
+    color: #050707;
+    font-size: 0.85rem;
+  }
+
+  .case-panel em {
+    max-width: 34rem;
+    color: rgba(255, 250, 240, 0.72);
+    font-style: normal;
+    line-height: 1.58;
+  }
+
+  .manifesto {
+    background: #f2b84b;
+    color: #050707;
+    overflow: hidden;
+  }
+
+  .manifesto-inner {
+    width: min(100%, 1180px);
+    margin-inline: auto;
+    padding: clamp(3rem, 7vw, 5.5rem) clamp(1.25rem, 5vw, 4rem);
+  }
+
+  .manifesto .eyebrow {
+    color: #050707;
+  }
+
+  .manifesto-lines {
+    display: grid;
+    gap: 1px;
+    margin-top: 1.2rem;
+    border-top: 1px solid rgba(5, 7, 7, 0.28);
+  }
+
+  .manifesto-lines span {
+    display: block;
+    padding-block: clamp(0.9rem, 2vw, 1.3rem);
+    border-bottom: 1px solid rgba(5, 7, 7, 0.28);
+    font-family: var(--font-display);
+    font-size: clamp(2.2rem, 8vw, 7.2rem);
+    line-height: 0.86;
   }
 
   .thesis-grid,
@@ -1277,6 +1758,11 @@ const caseNotes = [
       grid-template-columns: repeat(2, minmax(0, 1fr));
     }
 
+    .case-track {
+      grid-auto-columns: minmax(300px, 68vw);
+      padding-inline: clamp(1.25rem, 5vw, 4rem);
+    }
+
     .funnel-track,
     .deliverable-grid {
       grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -1336,6 +1822,28 @@ const caseNotes = [
       grid-template-columns: 1fr;
     }
 
+    .token-one {
+      right: 12%;
+      top: 24%;
+    }
+
+    .token-two,
+    .token-three {
+      display: none;
+    }
+
+    .menu-panel-inner {
+      width: min(100%, 640px);
+    }
+
+    .menu-links a {
+      grid-template-columns: 2.5rem minmax(0, 1fr);
+    }
+
+    .menu-links em {
+      grid-column: 2;
+    }
+
     .proof-rail {
       grid-template-columns: repeat(2, minmax(0, 1fr));
     }
@@ -1364,9 +1872,28 @@ const caseNotes = [
   }
 
   @media (max-width: 560px) {
+    .site-header {
+      gap: 0.7rem;
+      padding: 0.8rem 1rem;
+    }
+
     .nav-cta {
       padding-inline: 0.75rem;
       font-size: 0.82rem;
+    }
+
+    .menu-toggle {
+      width: 44px;
+      padding: 0;
+      justify-content: center;
+    }
+
+    .menu-toggle span {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      overflow: hidden;
+      clip: rect(0 0 0 0);
     }
 
     .brand-text {
@@ -1374,8 +1901,8 @@ const caseNotes = [
     }
 
     .brand-logo-wrap {
-      inline-size: 7.4rem;
-      block-size: 2.55rem;
+      inline-size: 7.1rem;
+      block-size: 2.45rem;
     }
 
     .hero-content {
@@ -1399,6 +1926,48 @@ const caseNotes = [
     .funnel-track,
     .deliverable-grid {
       grid-template-columns: 1fr;
+    }
+
+    .token-one {
+      display: none;
+    }
+
+    .menu-panel-inner {
+      padding: 1rem;
+    }
+
+    .menu-top img {
+      width: 8rem;
+    }
+
+    .menu-links {
+      margin-block: 1.5rem;
+    }
+
+    .menu-links strong {
+      font-size: clamp(2.2rem, 13vw, 4rem);
+    }
+
+    .menu-aside {
+      display: grid;
+      align-items: start;
+    }
+
+    .menu-aside a {
+      width: 100%;
+      text-align: center;
+    }
+
+    .case-reel-head h2 {
+      font-size: clamp(2.9rem, 14vw, 4.8rem);
+    }
+
+    .case-track {
+      grid-auto-columns: minmax(82vw, 82vw);
+    }
+
+    .case-panel {
+      min-height: 24rem;
     }
 
     .hero-copy {
@@ -1455,6 +2024,16 @@ const caseNotes = [
     .timeline article,
     .deliverable-grid article {
       min-height: auto;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .strip-marquee {
+      animation: none;
+    }
+
+    .token {
+      transition: none;
     }
   }
 </style>
