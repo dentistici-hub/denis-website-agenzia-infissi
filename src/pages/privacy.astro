@@ -1,0 +1,19 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import NavMega from '@components/navigation/NavMega.astro';
+import FooterColumns from '@components/footer/FooterColumns.astro';
+import { site, nav, schema } from '../data/placeholder';
+---
+
+<BaseLayout title="Privacy Policy" description={`Privacy policy per ${site.name}`} site={site} schema={schema}>
+  <NavMega brandName={site.name} links={nav} ctaLabel="Richiedi audit" />
+  <main class="container section" style="padding-top: calc(var(--space-2xl) + 80px);">
+    <h1 class="display" style="font-size: var(--text-3xl); margin-bottom: var(--space-lg);">Privacy Policy</h1>
+    <p style="color: var(--color-fg-muted); max-width: 700px; line-height: var(--leading-normal);">
+      Questo sito demo non utilizza cookie, analytics o tracciamento di terze parti.
+      Tutti i font sono ospitati in autonomia. Nessun dato personale viene raccolto o trasmesso a servizi esterni.
+      I messaggi inviati dal modulo di contatto vengono recapitati direttamente al team e non sono archiviati su server esterni.
+    </p>
+  </main>
+  <FooterColumns site={site} links={nav} />
+</BaseLayout>

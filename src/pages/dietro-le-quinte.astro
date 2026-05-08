@@ -1,0 +1,24 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import NavMega from '@components/navigation/NavMega.astro';
+import FooterColumns from '@components/footer/FooterColumns.astro';
+import TechnicalDisclosure from '@components/seo/TechnicalDisclosure.astro';
+import { site, nav, schema } from '../data/placeholder';
+---
+
+<BaseLayout
+  title="Dietro le quinte"
+  description={`Documentazione tecnica del sito ${site.name} — SEO, indicizzazione AI, accessibilità, performance.`}
+  site={site}
+  schema={schema}
+>
+  <NavMega brandName={site.name} links={nav} ctaLabel="Richiedi audit" />
+  <main style="padding-top: 80px;">
+    <TechnicalDisclosure
+      site={site}
+      schema={schema}
+      starter="Professional services starter"
+    />
+  </main>
+  <FooterColumns site={site} links={nav} />
+</BaseLayout>

@@ -1,0 +1,65 @@
+:root {
+  --max-width: 1200px;
+  --gutter: clamp(1.5rem, 1rem + 3vw, 4rem);
+
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+  --duration-fast: 200ms;
+  --duration-normal: 500ms;
+  --duration-slow: 800ms;
+
+  --space-xs: clamp(0.25rem, 0.15rem + 0.3vw, 0.5rem);
+  --space-sm: clamp(0.5rem, 0.3rem + 0.5vw, 0.75rem);
+  --space-md: clamp(1rem, 0.7rem + 1vw, 1.5rem);
+  --space-lg: clamp(2rem, 1rem + 3vw, 4rem);
+  --space-xl: clamp(3rem, 1.5rem + 5vw, 7rem);
+  --space-2xl: clamp(5rem, 3rem + 7vw, 12rem);
+  --space-section: clamp(5rem, 3rem + 7vw, 10rem);
+
+  --leading-tight: 1.1;
+  --leading-snug: 1.25;
+  --leading-normal: 1.7;
+  --leading-relaxed: 1.8;
+
+  --z-bg: 0;
+  --z-content: 1;
+  --z-overlap: 2;
+  --z-decorative: 5;
+  --z-interactive: 10;
+  --z-header: 100;
+  --z-overlay: 200;
+
+  /* Colors — Warm neutral + navy accent */
+  --color-bg: #F8F7F4;
+  --color-bg-elevated: #FFFFFF;
+  --color-bg-card: #F0EFEC;
+  --color-bg-dark: #1C1917;
+  --color-fg: #1C1917;
+  --color-fg-muted: #57534E;
+  --color-fg-faint: #A8A29E;
+  --color-fg-on-dark: #F8F7F4;
+  --color-accent: #1E3A5F;
+  --color-accent-hover: #2D5A8A;
+  --color-accent-light: #E8EEF4;
+  --color-accent-dark: #0F1F33;
+  --color-accent-secondary: #8B6F47;
+  --color-border: rgba(28, 25, 23, 0.12);
+  --color-border-strong: rgba(28, 25, 23, 0.2);
+
+  /* Typography — EB Garamond display + Inter body */
+  --font-display: 'EB Garamond Variable', 'EB Garamond', 'Georgia', serif;
+  --font-body: 'Inter Variable', 'Inter', system-ui, sans-serif;
+
+  --text-xs: clamp(0.7rem, 0.65rem + 0.2vw, 0.8rem);
+  --text-sm: clamp(0.8rem, 0.75rem + 0.2vw, 0.875rem);
+  --text-base: clamp(0.95rem, 0.85rem + 0.4vw, 1.1rem);
+  --text-lg: clamp(1.1rem, 0.9rem + 0.8vw, 1.5rem);
+  --text-xl: clamp(1.4rem, 1rem + 1.5vw, 2.2rem);
+  --text-2xl: clamp(2rem, 1.2rem + 3vw, 3.5rem);
+  --text-3xl: clamp(2.5rem, 1.5rem + 4vw, 4.5rem);
+  --text-display: clamp(3rem, 2rem + 5vw, 6rem);
+
+  --display-weight: 500;
+  --display-spacing: -0.02em;
+  --body-weight: 400;
+}
