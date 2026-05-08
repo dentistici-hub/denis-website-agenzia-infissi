@@ -2,16 +2,18 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { site, nav, schema, services, testimonials, faqs } from '../data/placeholder';
 
-const description = 'Landing page dimostrativa per Telaio Growth: agenzia marketing verticale per aziende di infissi e serramenti che vogliono preventivi qualificati, tracciamento e follow-up commerciale.';
+const description = 'M2E Marketing costruisce landing page, campagne e sistemi di follow-up per aziende di infissi e serramenti che vogliono preventivi qualificati, tracciamento e appuntamenti commerciali reali.';
 const basePath = import.meta.env.BASE_URL;
 const withBase = (path: string) => `${basePath.replace(/\/?$/, '/')}${path.replace(/^\//, '')}`;
-const heroImage = withBase('/images/hero-showroom-pipeline.png');
+const logoImage = withBase('/images/m2e-logo-cropped.png');
+const heroImage = withBase('/images/hero-showroom-pipeline.webp');
+const ogImage = `${site.url}/images/og-m2e-infissi.webp`;
 
 const channels = [
   { label: 'Google Search', value: 'Domanda calda: sostituzione infissi, preventivo, posa certificata.' },
   { label: 'Meta locale', value: 'Domanda latente: riqualificazione, isolamento, showroom e offerte stagionali.' },
   { label: 'SEO + AI search', value: 'Contenuti utili per bonus, materiali, posa, trasmittanza e zone servite.' },
-  { label: 'CRM/WhatsApp', value: 'Richieste ordinate per priorita, tempo di risposta e prossima azione.' },
+  { label: 'CRM/WhatsApp', value: 'Richieste ordinate per priorità, tempo di risposta e prossima azione.' },
 ];
 
 const process = [
@@ -23,18 +25,63 @@ const process = [
 ];
 
 const proofPoints = [
-  'Niente traffico generico: keyword e creativita parlano di serramenti, non di "casa bella".',
+  'Niente traffico generico: keyword e creatività parlano di serramenti, non di "casa bella".',
   'Modulo breve al primo contatto, qualifica progressiva dopo la richiesta.',
   'Dashboard con costo per richiesta, costo per sopralluogo, preventivi emessi e vendite.',
   'Pagine pensate mobile-first: molti proprietari confrontano fornitori dal telefono.',
 ];
+
+const proofMetrics = [
+  { value: '≤ 5 min', label: 'tempo ideale di primo contatto' },
+  { value: '4 campi', label: 'richiesta iniziale, poi qualifica' },
+  { value: '5 KPI', label: 'da lead a vendita, non solo CPL' },
+  { value: '90 giorni', label: 'ciclo minimo di validazione' },
+];
+
+const funnelSteps = [
+  { label: 'Traffico', detail: 'Search, Meta, SEO locale', metric: 'Intento' },
+  { label: 'Richiesta', detail: 'Modulo breve + telefono', metric: 'Lead' },
+  { label: 'Qualifica', detail: 'Zona, prodotto, urgenza', metric: 'Score' },
+  { label: 'Sopralluogo', detail: 'Agenda e reminder', metric: 'Appuntamento' },
+  { label: 'Preventivo', detail: 'Follow-up e next action', metric: 'Valore' },
+  { label: 'Vendita', detail: 'Chiusura e motivo perso', metric: 'ROI' },
+];
+
+const auditDeliverables = [
+  { title: 'Mappa domanda locale', text: 'Keyword, zone servite, materiali e intenti divisi per urgenza commerciale.' },
+  { title: 'Diagnosi pagina attuale', text: 'Cosa frena fiducia, richiesta preventivo e prenotazione sopralluogo su mobile.' },
+  { title: 'Schema lead scoring', text: 'Regole per separare curiosi, fuori zona, cantieri piccoli e richieste ad alto margine.' },
+  { title: 'Sequenza WhatsApp', text: 'Primi messaggi, domande minime, reminder e recupero preventivo dopo sopralluogo.' },
+  { title: 'Cruscotto KPI', text: 'Costo richiesta, costo sopralluogo, preventivi emessi, chiusura e valore pipeline.' },
+  { title: 'Piano 30 giorni', text: 'Tre priorità operative: pagina, tracking, canale da testare senza bruciare budget.' },
+];
+
+const caseNotes = [
+  {
+    title: 'Showroom fascia medio-alta',
+    goal: 'Aumentare sopralluoghi per alluminio e legno-alluminio',
+    metrics: ['Filtro budget minimo', 'Campagne per materiale', 'Follow-up 0-24h'],
+  },
+  {
+    title: 'Installatore locale',
+    goal: 'Ridurre richieste fuori zona e preventivi piccoli',
+    metrics: ['Zona obbligatoria', 'Numero infissi', 'Urgenza intervento'],
+  },
+  {
+    title: 'Rete posa certificata',
+    goal: 'Separare privati, imprese e studi tecnici',
+    metrics: ['Landing per audience', 'CRM per canale', 'Report settimanale'],
+  },
+];
 ---
 
-<BaseLayout title="Marketing per infissi" description={description} site={site} schema={schema} demoMessage="Demo landing per agenzia marketing verticale infissi. Pronta da adattare a brand, offerta e casi reali.">
+<BaseLayout title="Marketing per infissi" description={description} site={site} schema={schema} ogImage={ogImage} preloadImage={heroImage}>
   <header class="site-header">
     <a class="brand" href="#top" aria-label={`${site.name} home`}>
-      <span class="brand-mark" aria-hidden="true">TG</span>
-      <span>{site.name}</span>
+      <span class="brand-logo-wrap" aria-hidden="true">
+        <img src={logoImage} alt="" width="760" height="326" />
+      </span>
+      <span class="brand-text">{site.name}</span>
     </a>
     <nav class="desktop-nav" aria-label="Navigazione principale">
       {nav.map((item) => <a href={item.href}>{item.label}</a>)}
@@ -50,33 +97,47 @@ const proofPoints = [
         <p class="eyebrow">Per showroom, produttori e installatori di serramenti</p>
         <h1 id="hero-title" class="display">Pipeline di preventivi per serramentisti</h1>
         <p class="hero-copy">
-          Una landing page verticale, campagne misurate e follow-up commerciale per trasformare traffico locale in richieste qualificate, sopralluoghi e preventivi tracciati.
+          M2E costruisce pagine, campagne e follow-up per trasformare traffico locale in richieste qualificate, sopralluoghi e preventivi tracciati fino alla vendita.
         </p>
         <div class="hero-actions" aria-label="Azioni principali">
           <a class="button button-primary" href="#contact">Richiedi audit</a>
           <a class="button button-secondary" href="#sistema">Vedi il sistema</a>
         </div>
-        <div class="hero-metrics" aria-label="Metriche principali">
-          <div>
-            <strong>90 giorni</strong>
-            <span>per validare canali, pagina e follow-up</span>
-          </div>
-          <div>
-            <strong>5 metriche</strong>
-            <span>dal lead alla vendita, non solo clic</span>
-          </div>
-          <div>
-            <strong>1 verticale</strong>
-            <span>infissi, serramenti, posa e showroom</span>
-          </div>
+        <div class="proof-rail" aria-label="Standard operativi">
+          {proofMetrics.map((item) => (
+            <div>
+              <strong>{item.value}</strong>
+              <span>{item.label}</span>
+            </div>
+          ))}
         </div>
       </div>
     </section>
 
     <section class="strip" aria-label="Posizionamento">
       <div class="strip-inner">
-        <span>Non vendiamo "visibilita".</span>
+        <span>Non vendiamo "visibilità".</span>
         <span>Costruiamo un sistema commerciale misurabile per richieste ad alto valore.</span>
+      </div>
+    </section>
+
+    <section class="section evidence" aria-label="Prova operativa">
+      <div class="container evidence-grid">
+        <div>
+          <p class="eyebrow">Proof stack</p>
+          <h2 class="display section-title">Prima di chiedere budget, mettiamo in ordine la prova.</h2>
+        </div>
+        <div class="case-note-grid">
+          {caseNotes.map((item) => (
+            <article class="case-note">
+              <p>{item.title}</p>
+              <h3>{item.goal}</h3>
+              <ul>
+                {item.metrics.map((metric) => <li>{metric}</li>)}
+              </ul>
+            </article>
+          ))}
+        </div>
       </div>
     </section>
 
@@ -84,7 +145,7 @@ const proofPoints = [
       <div class="container thesis-grid">
         <div>
           <p class="eyebrow">Il punto</p>
-          <h2 class="display section-title">Il problema non e avere piu lead. E sapere quali meritano una chiamata.</h2>
+          <h2 class="display section-title">Il problema non è avere più lead. È sapere quali meritano una chiamata.</h2>
         </div>
         <div class="thesis-copy">
           <p>
@@ -97,12 +158,31 @@ const proofPoints = [
       </div>
     </section>
 
+    <section class="section funnel" aria-label="Pipeline commerciale">
+      <div class="container">
+        <div class="section-head">
+          <p class="eyebrow">Signature system</p>
+          <h2 class="display section-title">Dal clic alla vendita, ogni passaggio ha un proprietario.</h2>
+          <p>Le pagine best-in-class non si limitano a generare richieste: rendono visibile dove il margine entra, dove si blocca e chi deve intervenire.</p>
+        </div>
+        <div class="funnel-track">
+          {funnelSteps.map((step, index) => (
+            <article class="funnel-step" style={`--index: ${index}`}>
+              <span>{step.metric}</span>
+              <h3>{step.label}</h3>
+              <p>{step.detail}</p>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+
     <section class="section system" id="sistema">
       <div class="container">
         <div class="section-head">
           <p class="eyebrow">Sistema</p>
           <h2 class="display section-title">Quattro pezzi, una sola pipeline</h2>
-          <p>Ogni elemento e progettato per togliere attrito al cliente e togliere ambiguita al commerciale.</p>
+          <p>Ogni elemento è progettato per togliere attrito al cliente e togliere ambiguità al commerciale.</p>
         </div>
         <div class="system-grid">
           {services.map((service, index) => (
@@ -120,9 +200,9 @@ const proofPoints = [
       <div class="container diagnostic-grid">
         <div class="diagnostic-copy">
           <p class="eyebrow">Economia del lead</p>
-          <h2 class="display section-title">Il CPL da solo e una trappola educata.</h2>
+          <h2 class="display section-title">Il CPL da solo è una trappola educata.</h2>
           <p>
-            Una richiesta da 18 euro puo costare carissima se non diventa sopralluogo. Una richiesta da 70 euro puo essere ottima se porta un cantiere da 12.000 euro. Qui si ragiona a margine, non a vanita.
+            Una richiesta da 18 euro può costare carissima se non diventa sopralluogo. Una richiesta da 70 euro può essere ottima se porta un cantiere da 12.000 euro. Qui si ragiona a margine, non a vanità.
           </p>
           <ul class="check-list">
             {proofPoints.map((point) => <li>{point}</li>)}
@@ -161,7 +241,7 @@ const proofPoints = [
       <div class="container split">
         <div class="sticky-copy">
           <p class="eyebrow">Canali</p>
-          <h2 class="display section-title">La creativita cambia per intenzione, non per capriccio.</h2>
+          <h2 class="display section-title">La creatività cambia per intenzione, non per capriccio.</h2>
           <p>Chi cerca "preventivo infissi PVC Torino" non ha bisogno dello stesso messaggio di chi sta leggendo un post sulla bolletta o sulla riqualificazione energetica.</p>
         </div>
         <div class="channel-list">
@@ -169,6 +249,24 @@ const proofPoints = [
             <article>
               <h3>{channel.label}</h3>
               <p>{channel.value}</p>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="section deliverables">
+      <div class="container">
+        <div class="section-head">
+          <p class="eyebrow">Cosa ricevi</p>
+          <h2 class="display section-title">L’audit non finisce con una call. Finisce con materiale usabile.</h2>
+          <p>Il punto non è convincerti che “serve marketing”. Il punto è uscire con decisioni: cosa misurare, cosa correggere, quale canale testare e quali richieste smettere di inseguire.</p>
+        </div>
+        <div class="deliverable-grid">
+          {auditDeliverables.map((item) => (
+            <article>
+              <h3>{item.title}</h3>
+              <p>{item.text}</p>
             </article>
           ))}
         </div>
@@ -236,14 +334,14 @@ const proofPoints = [
           <p class="eyebrow">Audit gratuito</p>
           <h2 class="display section-title">Porta sito, campagne e processo commerciale. Guardiamo dove perde acqua.</h2>
           <p>
-            In 30 minuti analizziamo offerta, pagina attuale, tracciamento, canali e follow-up. Se c'e margine per lavorare, ti diciamo da dove partire. Se non c'e, ti evitiamo una fattura inutile. Succede raramente, ma ci piace fingere di essere adulti.
+            In 30 minuti analizziamo offerta, pagina attuale, tracciamento, canali e follow-up. Se c’è margine per lavorare, ti diciamo da dove partire. Se non c’è, ti evitiamo una fattura inutile. Succede raramente, ma ci piace fingere di essere adulti.
           </p>
           <div class="contact-direct">
             <a href={`mailto:${site.contact.email}`}>{site.contact.email}</a>
             <a href={`tel:${site.contact.phone?.replaceAll(' ', '')}`}>{site.contact.phone}</a>
           </div>
         </div>
-        <form class="lead-form" action={`mailto:${site.contact.email}`} method="post" enctype="text/plain">
+        <form class="lead-form" id="auditForm">
           <label>
             Azienda
             <input name="azienda" autocomplete="organization" required />
@@ -257,10 +355,14 @@ const proofPoints = [
             <input name="zona" autocomplete="address-level2" placeholder="Es. Torino e provincia" />
           </label>
           <label>
+            Telefono
+            <input name="telefono" type="tel" autocomplete="tel" placeholder="+39" />
+          </label>
+          <label>
             Cosa vuoi migliorare?
             <select name="obiettivo">
-              <option>Preventivi piu qualificati</option>
-              <option>Piu sopralluoghi</option>
+              <option>Preventivi più qualificati</option>
+              <option>Più sopralluoghi</option>
               <option>Tracking e CRM</option>
               <option>Campagne Google/Meta</option>
             </select>
@@ -270,7 +372,7 @@ const proofPoints = [
             <textarea name="messaggio" rows="4" placeholder="Scrivi due righe su sito, canali attivi e obiettivo commerciale."></textarea>
           </label>
           <button class="button button-primary" type="submit">Invia richiesta</button>
-          <p class="form-note">Nessuna newsletter automatica. Solo risposta sull'audit.</p>
+          <p class="form-note">Nessuna newsletter automatica. Il form prepara una richiesta email già strutturata per l’audit.</p>
         </form>
       </div>
     </section>
@@ -314,6 +416,27 @@ const proofPoints = [
 
   [leadRange, visitRange, ticketRange].forEach((input) => input?.addEventListener('input', updateCalculator));
   updateCalculator();
+
+  const auditForm = document.getElementById('auditForm') as HTMLFormElement | null;
+  auditForm?.addEventListener('submit', (event) => {
+    event.preventDefault();
+    const data = new FormData(auditForm);
+    const lines = [
+      'Richiesta audit M2E Marketing',
+      '',
+      `Azienda: ${data.get('azienda') || ''}`,
+      `Email: ${data.get('email') || ''}`,
+      `Telefono: ${data.get('telefono') || ''}`,
+      `Zona servita: ${data.get('zona') || ''}`,
+      `Obiettivo: ${data.get('obiettivo') || ''}`,
+      '',
+      'Contesto:',
+      `${data.get('messaggio') || ''}`,
+    ];
+    const subject = encodeURIComponent('Richiesta audit marketing infissi');
+    const body = encodeURIComponent(lines.join('\n'));
+    window.location.href = `mailto:audit@m2emarketing.it?subject=${subject}&body=${body}`;
+  });
 </script>
 
 <style>
@@ -350,19 +473,32 @@ const proofPoints = [
   .brand {
     display: inline-flex;
     align-items: center;
-    gap: 0.7rem;
+    gap: 0.8rem;
     font-weight: 760;
     letter-spacing: 0;
   }
 
-  .brand-mark {
-    display: grid;
-    place-items: center;
-    inline-size: 2.35rem;
-    block-size: 2.35rem;
-    border: 1px solid rgba(255, 255, 255, 0.45);
-    background: rgba(255, 255, 255, 0.1);
-    font-size: 0.8rem;
+  .brand-logo-wrap {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    inline-size: 9.6rem;
+    block-size: 3.05rem;
+    padding: 0.22rem 0.5rem;
+    background: rgba(255, 255, 255, 0.94);
+    border: 1px solid rgba(255, 255, 255, 0.58);
+  }
+
+  .brand-logo-wrap img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
+  }
+
+  .brand-text {
+    color: #fffaf0;
+    font-weight: 820;
   }
 
   .desktop-nav {
@@ -465,6 +601,44 @@ const proofPoints = [
     flex-wrap: wrap;
     gap: 0.8rem;
     margin-top: 1.8rem;
+  }
+
+  .proof-rail {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    width: min(100%, 850px);
+    margin-top: 1.2rem;
+    border: 1px solid rgba(255, 250, 240, 0.18);
+    background: rgba(9, 29, 30, 0.44);
+    backdrop-filter: blur(10px);
+  }
+
+  .proof-rail div {
+    min-height: 5.4rem;
+    padding: 0.82rem 0.9rem;
+    border-right: 1px solid rgba(255, 250, 240, 0.14);
+  }
+
+  .proof-rail div:last-child {
+    border-right: 0;
+  }
+
+  .proof-rail strong,
+  .proof-rail span {
+    display: block;
+  }
+
+  .proof-rail strong {
+    color: #f2b84b;
+    font-size: 1.02rem;
+    line-height: 1.1;
+  }
+
+  .proof-rail span {
+    margin-top: 0.35rem;
+    color: rgba(255, 250, 240, 0.72);
+    font-size: 0.78rem;
+    line-height: 1.3;
   }
 
   .button {
@@ -576,6 +750,60 @@ const proofPoints = [
     line-height: 1.68;
   }
 
+  .evidence {
+    background: #fffaf0;
+    border-bottom: 1px solid rgba(16, 34, 35, 0.1);
+  }
+
+  .evidence-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 0.78fr) minmax(320px, 1.22fr);
+    gap: clamp(2rem, 7vw, 5rem);
+    align-items: start;
+  }
+
+  .case-note-grid {
+    display: grid;
+    gap: 1px;
+    background: rgba(16, 34, 35, 0.16);
+  }
+
+  .case-note {
+    padding: clamp(1rem, 2.2vw, 1.45rem);
+    background: #f7f4ee;
+  }
+
+  .case-note p {
+    margin: 0 0 0.65rem;
+    color: #b56f32;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    font-size: 0.72rem;
+    font-weight: 820;
+  }
+
+  .case-note h3 {
+    font-size: clamp(1.15rem, 2vw, 1.55rem);
+    line-height: 1.16;
+    color: #102223;
+  }
+
+  .case-note ul {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.45rem;
+    list-style: none;
+    margin-top: 1rem;
+  }
+
+  .case-note li {
+    padding: 0.34rem 0.52rem;
+    background: #dbece7;
+    color: #263837;
+    font-size: 0.78rem;
+    font-weight: 760;
+  }
+
   .thesis-grid,
   .diagnostic-grid,
   .split,
@@ -594,6 +822,83 @@ const proofPoints = [
   .system {
     background: #102223;
     color: #fffaf0;
+  }
+
+  .funnel {
+    background: #e8e0d2;
+  }
+
+  .funnel-track {
+    position: relative;
+    display: grid;
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+    gap: 0;
+    border: 1px solid rgba(16, 34, 35, 0.16);
+    background: #f7f4ee;
+    overflow: hidden;
+  }
+
+  .funnel-track::before {
+    content: '';
+    position: absolute;
+    left: 8%;
+    right: 8%;
+    top: 2.2rem;
+    height: 2px;
+    background: linear-gradient(90deg, #2e8176, #f2b84b);
+    opacity: 0.75;
+  }
+
+  .funnel-step {
+    position: relative;
+    min-height: 15rem;
+    padding: 4rem 1rem 1.2rem;
+    border-right: 1px solid rgba(16, 34, 35, 0.12);
+    transition: background 180ms ease, transform 180ms ease;
+  }
+
+  .funnel-step:last-child {
+    border-right: 0;
+  }
+
+  .funnel-step::before {
+    content: '';
+    position: absolute;
+    top: 1.82rem;
+    left: 1rem;
+    width: 0.82rem;
+    height: 0.82rem;
+    background: #102223;
+    border: 3px solid #f2b84b;
+    border-radius: 999px;
+    z-index: 1;
+  }
+
+  .funnel-step:hover {
+    background: #fffaf0;
+    transform: translateY(-2px);
+  }
+
+  .funnel-step span {
+    color: #2e8176;
+    text-transform: uppercase;
+    letter-spacing: 0.09em;
+    font-size: 0.72rem;
+    font-weight: 820;
+  }
+
+  .funnel-step h3 {
+    margin-top: 0.55rem;
+    color: #102223;
+    font-size: 1.16rem;
+    line-height: 1.12;
+  }
+
+  .funnel-step p {
+    margin-top: 0.75rem;
+    color: #51605c;
+    font-size: 0.9rem;
+    line-height: 1.45;
   }
 
   .system .section-title,
@@ -722,6 +1027,36 @@ const proofPoints = [
 
   .channels {
     background: #e8e0d2;
+  }
+
+  .deliverables {
+    background: #fffaf0;
+  }
+
+  .deliverable-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    border-top: 1px solid rgba(16, 34, 35, 0.14);
+    border-left: 1px solid rgba(16, 34, 35, 0.14);
+  }
+
+  .deliverable-grid article {
+    min-height: 13rem;
+    padding: clamp(1rem, 2.5vw, 1.5rem);
+    border-right: 1px solid rgba(16, 34, 35, 0.14);
+    border-bottom: 1px solid rgba(16, 34, 35, 0.14);
+  }
+
+  .deliverable-grid h3 {
+    color: #102223;
+    font-size: 1.18rem;
+    line-height: 1.15;
+  }
+
+  .deliverable-grid p {
+    margin-top: 0.85rem;
+    color: #51605c;
+    line-height: 1.55;
   }
 
   .sticky-copy {
@@ -942,6 +1277,11 @@ const proofPoints = [
       grid-template-columns: repeat(2, minmax(0, 1fr));
     }
 
+    .funnel-track,
+    .deliverable-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
     .timeline {
       grid-template-columns: repeat(2, minmax(0, 1fr));
     }
@@ -986,12 +1326,26 @@ const proofPoints = [
     }
 
     .hero-metrics,
+    .proof-rail,
+    .evidence-grid,
     .thesis-grid,
     .diagnostic-grid,
     .split,
     .contact-grid,
     .faq-grid {
       grid-template-columns: 1fr;
+    }
+
+    .proof-rail {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .proof-rail div:nth-child(2n) {
+      border-right: 0;
+    }
+
+    .proof-rail div:nth-child(-n + 2) {
+      border-bottom: 1px solid rgba(255, 250, 240, 0.14);
     }
 
     .hero-metrics {
@@ -1015,12 +1369,17 @@ const proofPoints = [
       font-size: 0.82rem;
     }
 
-    .brand span:last-child {
+    .brand-text {
       display: none;
     }
 
+    .brand-logo-wrap {
+      inline-size: 7.4rem;
+      block-size: 2.55rem;
+    }
+
     .hero-content {
-      padding-inline: 1rem;
+      padding: 5.9rem 1rem 1.1rem;
     }
 
     .hero-actions {
@@ -1031,14 +1390,71 @@ const proofPoints = [
       width: 100%;
     }
 
-    .hero-metrics,
+    .hero-metrics {
+      display: none;
+    }
+
     .system-grid,
-    .timeline {
+    .timeline,
+    .funnel-track,
+    .deliverable-grid {
       grid-template-columns: 1fr;
+    }
+
+    .hero-copy {
+      font-size: 1rem;
+      line-height: 1.48;
+    }
+
+    .proof-rail div {
+      min-height: 4.55rem;
+      padding: 0.68rem 0.72rem;
+    }
+
+    .proof-rail div {
+      border-right: 1px solid rgba(255, 250, 240, 0.14);
+      border-bottom: 0;
+    }
+
+    .proof-rail div:nth-child(2n) {
+      border-right: 0;
+    }
+
+    .proof-rail div:nth-child(-n + 2) {
+      border-bottom: 1px solid rgba(255, 250, 240, 0.14);
+    }
+
+    .proof-rail div:nth-child(n + 3) {
+      border-bottom: 0;
+    }
+
+    .funnel-track::before {
+      left: 1.4rem;
+      right: auto;
+      top: 2rem;
+      bottom: 2rem;
+      width: 2px;
+      height: auto;
+      background: linear-gradient(180deg, #2e8176, #f2b84b);
     }
 
     .timeline article:last-child {
       grid-column: auto;
+    }
+
+    .funnel-step {
+      min-height: 9.8rem;
+      padding: 3rem 1rem 1rem 2.75rem;
+    }
+
+    .funnel-step::before {
+      left: 1.06rem;
+    }
+
+    .system-card,
+    .timeline article,
+    .deliverable-grid article {
+      min-height: auto;
     }
   }
 </style>

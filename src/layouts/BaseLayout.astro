@@ -15,10 +15,15 @@ interface Props {
   schema: SchemaConfig;
   isDemo?: boolean;
   demoMessage?: string;
+  ogImage?: string;
+  preloadImage?: string;
 }
 
-const { title, description, site, schema, isDemo = true, demoMessage = "Questa è un'anteprima del tuo nuovo sito. Ti piace? Rispondi all'email per procedere." } = Astro.props;
+const { title, description, site, schema, isDemo = false, demoMessage = "Questa è un'anteprima del tuo nuovo sito. Ti piace? Rispondi all'email per procedere.", ogImage, preloadImage } = Astro.props;
 const fullTitle = `${title} | ${site.name}`;
+const locale = site.language === 'it' ? 'it_IT' : 'en_US';
+const basePath = import.meta.env.BASE_URL;
+const withBase = (path: string) => `${basePath.replace(/\/?$/, '/')}${path.replace(/^\//, '')}`;
 ---
 
 <!doctype html>
@@ -29,8 +34,9 @@ const fullTitle = `${title} | ${site.name}`;
     <title>{fullTitle}</title>
     <meta name="description" content={description} />
     <meta name="last-modified" content={site.lastUpdated} />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <link rel="sitemap" href="/sitemap-index.xml" />
+    <link rel="icon" type="image/svg+xml" href={withBase('/favicon.svg')} />
+    <link rel="sitemap" href={withBase('/sitemap-index.xml')} />
+    {preloadImage && <link rel="preload" as="image" href={preloadImage} fetchpriority="high" />}
 
     {isDemo && <meta name="robots" content="noindex, nofollow" />}
 
@@ -39,6 +45,8 @@ const fullTitle = `${title} | ${site.name}`;
       description={description}
       url={site.url}
       siteName={site.name}
+      image={ogImage}
+      locale={locale}
     />
 
     <SchemaLayer

@@ -1,14 +1,14 @@
 import type { SiteConfig, NavLink, Service, CaseStudy, TeamMember, Testimonial, Stat, FAQ, PhilosophyPillar, LogoItem, SchemaConfig } from '@components/types/content';
 
 export const site: SiteConfig = {
-  name: 'Telaio Growth',
+  name: 'M2E Marketing',
   tagline: 'Marketing verticale per infissi e serramenti',
-  description: 'Telaio Growth progetta landing page, campagne e sistemi di follow-up per aziende di infissi che vogliono piu preventivi qualificati e meno richieste fuori target.',
+  description: 'M2E Marketing progetta landing page, campagne e sistemi di follow-up per aziende di infissi che vogliono più preventivi qualificati e meno richieste fuori target.',
   url: 'https://dentistici-hub.github.io/denis-website-agenzia-infissi',
   language: 'it',
   lastUpdated: '2026-05-08',
   contact: {
-    email: 'audit@telaiogrowth.it',
+    email: 'audit@m2emarketing.it',
     phone: '+39 011 1970 4428',
     address: 'Corso Vittorio Emanuele II 92',
     city: 'Torino',
@@ -16,7 +16,7 @@ export const site: SiteConfig = {
     lat: 45.0642,
     lng: 7.6785,
   },
-  social: { linkedin: 'https://www.linkedin.com/company/telaio-growth' },
+  social: { linkedin: 'https://www.linkedin.com/company/m2e-marketing' },
 };
 
 export const nav: NavLink[] = [
@@ -51,21 +51,21 @@ export const caseStudies: CaseStudy[] = [
     title: 'Showroom serramenti premium',
     client: 'Nord Italia',
     description: 'Segmentazione campagne per materiale e fascia prezzo, con landing dedicata ai serramenti in alluminio di alta gamma.',
-    image: '/images/hero-showroom-pipeline.png',
+    image: '/images/hero-showroom-pipeline.webp',
     tags: ['-38% CPL', '+21 sopralluoghi', '90 giorni'],
   },
   {
     title: 'Installatore locale',
     client: 'Provincia competitiva',
     description: 'Filtro iniziale su zona, numero infissi e tempi di intervento per ridurre richieste non servibili.',
-    image: '/images/hero-showroom-pipeline.png',
+    image: '/images/hero-showroom-pipeline.webp',
     tags: ['Lead scoring', 'WhatsApp', 'CRM'],
   },
   {
     title: 'Rete posa certificata',
     client: 'B2B e privati',
     description: 'Messaggi separati per progettisti, imprese edili e proprietari di casa in riqualificazione energetica.',
-    image: '/images/hero-showroom-pipeline.png',
+    image: '/images/hero-showroom-pipeline.webp',
     tags: ['Multi-audience', 'SEO locale', 'Retargeting'],
   },
 ];
@@ -75,19 +75,19 @@ export const team: TeamMember[] = [
     name: 'Strategist serramenti',
     role: 'Domanda e posizionamento',
     bio: 'Analizza zona, margini, mix prodotti e competitor prima di accendere un euro di traffico.',
-    image: '/images/hero-showroom-pipeline.png',
+    image: '/images/hero-showroom-pipeline.webp',
   },
   {
     name: 'Performance lead',
     role: 'Campagne e tracciamento',
     bio: 'Tiene separati lead, sopralluoghi e vendite. Una raffinatezza quasi rivoluzionaria nel marketing locale.',
-    image: '/images/hero-showroom-pipeline.png',
+    image: '/images/hero-showroom-pipeline.webp',
   },
   {
     name: 'Sales ops',
     role: 'CRM e follow-up',
     bio: 'Costruisce routine commerciali per richiamare i contatti giusti al momento giusto.',
-    image: '/images/hero-showroom-pipeline.png',
+    image: '/images/hero-showroom-pipeline.webp',
   },
 ];
 
@@ -99,13 +99,13 @@ export const testimonials: Testimonial[] = [
     company: 'Piemonte',
   },
   {
-    quote: 'Ci hanno tolto richieste fuori zona e curiosi da prezzo. Meno volume inutile, piu appuntamenti veri.',
+    quote: 'Ci hanno tolto richieste fuori zona e curiosi da prezzo. Meno volume inutile, più appuntamenti veri.',
     author: 'Responsabile commerciale',
     role: 'Infissi PVC e posa',
     company: 'Lombardia',
   },
   {
-    quote: 'La parte migliore e stata il follow-up: prima chiamavamo quando capitava, adesso abbiamo una coda chiara.',
+    quote: 'La parte migliore è stata il follow-up: prima chiamavamo quando capitava, adesso abbiamo una coda chiara.',
     author: 'Amministratore',
     role: 'Rete installatori',
     company: 'Nord Ovest',
@@ -125,7 +125,7 @@ export const philosophy: PhilosophyPillar[] = [
   {
     number: '01',
     title: 'Prima si qualifica',
-    description: 'Zona, tipologia, metrature, tempi e budget minimo. Una richiesta senza contesto non e un lead, e una distrazione.',
+    description: 'Zona, tipologia, metrature, tempi e budget minimo. Una richiesta senza contesto non è un lead, è una distrazione.',
   },
   {
     number: '02',
@@ -148,41 +148,41 @@ export const logos: LogoItem[] = [
 export const insights = [
   {
     slug: 'landing-page-serramenti-che-converte',
-    title: 'Perche una landing per serramenti non deve sembrare una brochure',
+    title: 'Perché una landing per serramenti non deve sembrare una brochure',
     date: '2026-05-08',
     category: 'Conversione',
     excerpt: 'La pagina deve separare curiosi, preventivi seri e clienti pronti al sopralluogo. Il design serve a far emergere quella differenza.',
-    body: 'Nel settore infissi il problema non e solo generare richieste. Il problema e capire quali richieste meritano tempo commerciale. Una landing efficace mette subito in chiaro zona servita, materiali, livello di qualita, tempi di posa e processo di sopralluogo.\n\nLa struttura migliore non parte da "chi siamo", ma dal motivo per cui il cliente deve fidarsi: prodotto, posa, certificazioni, casi reali e un percorso semplice per richiedere una valutazione. Il modulo deve chiedere pochi dati all inizio e usare il follow-up per completare la qualifica.\n\nIl risultato non e una pagina piu bella. E una pagina che rende misurabile il lavoro commerciale.',
+    body: 'Nel settore infissi il problema non è solo generare richieste. Il problema è capire quali richieste meritano tempo commerciale. Una landing efficace mette subito in chiaro zona servita, materiali, livello di qualità, tempi di posa e processo di sopralluogo.\n\nLa struttura migliore non parte da "chi siamo", ma dal motivo per cui il cliente deve fidarsi: prodotto, posa, certificazioni, casi reali e un percorso semplice per richiedere una valutazione. Il modulo deve chiedere pochi dati all’inizio e usare il follow-up per completare la qualifica.\n\nIl risultato non è una pagina più bella. È una pagina che rende misurabile il lavoro commerciale.',
   },
   {
     slug: 'metriche-marketing-infissi',
     title: 'Le metriche da guardare prima del costo per lead',
     date: '2026-05-08',
     category: 'Performance',
-    excerpt: 'Un CPL basso puo nascondere richieste pessime. Per uno showroom contano sopralluoghi, preventivi validi e vendite.',
-    body: 'Il costo per lead e utile solo se il lead ha un percorso commerciale tracciato. Per una azienda di infissi bisogna misurare costo per richiesta qualificata, costo per sopralluogo, tasso di emissione preventivo, tasso di chiusura e valore medio ordine.\n\nQueste metriche cambiano le decisioni. Una campagna con CPL piu alto puo essere piu profittevole se porta cantieri migliori, materiali ad alto margine o clienti che decidono piu rapidamente.\n\nSenza questo livello di tracciamento, il marketing diventa una gara a chi compra contatti piu economici. Non e strategia. E roulette con un report elegante.',
+    excerpt: 'Un CPL basso può nascondere richieste pessime. Per uno showroom contano sopralluoghi, preventivi validi e vendite.',
+    body: 'Il costo per lead è utile solo se il lead ha un percorso commerciale tracciato. Per un’azienda di infissi bisogna misurare costo per richiesta qualificata, costo per sopralluogo, tasso di emissione preventivo, tasso di chiusura e valore medio ordine.\n\nQueste metriche cambiano le decisioni. Una campagna con CPL più alto può essere più profittevole se porta cantieri migliori, materiali ad alto margine o clienti che decidono più rapidamente.\n\nSenza questo livello di tracciamento, il marketing diventa una gara a chi compra contatti più economici. Non è strategia. È roulette con un report elegante.',
   },
   {
     slug: 'follow-up-whatsapp-serramenti',
     title: 'Il follow-up WhatsApp che non fa perdere preventivi caldi',
     date: '2026-05-08',
     category: 'Sales ops',
-    excerpt: 'La velocita di risposta e decisiva, ma senza messaggi utili diventa solo pressione commerciale.',
-    body: 'Chi chiede un preventivo per infissi spesso sta confrontando piu fornitori. La prima risposta deve confermare competenza e ridurre incertezza: materiali trattati, zona servita, tempi medi, cosa serve per una stima attendibile.\n\nUn buon follow-up usa poche domande, chiare e sequenziali. Prima qualifica il bisogno, poi propone lo step successivo: chiamata, invio foto, sopralluogo o visita in showroom.\n\nIl CRM serve a non dimenticare nessuno. WhatsApp serve a rendere naturale la conversazione. La combinazione e molto meno poetica di un funnel diagram, ma funziona meglio.',
+    excerpt: 'La velocità di risposta è decisiva, ma senza messaggi utili diventa solo pressione commerciale.',
+    body: 'Chi chiede un preventivo per infissi spesso sta confrontando più fornitori. La prima risposta deve confermare competenza e ridurre incertezza: materiali trattati, zona servita, tempi medi, cosa serve per una stima attendibile.\n\nUn buon follow-up usa poche domande, chiare e sequenziali. Prima qualifica il bisogno, poi propone lo step successivo: chiamata, invio foto, sopralluogo o visita in showroom.\n\nIl CRM serve a non dimenticare nessuno. WhatsApp serve a rendere naturale la conversazione. La combinazione è molto meno poetica di un funnel diagram, ma funziona meglio.',
   },
 ];
 
 export const faqs: FAQ[] = [
   {
     question: 'Lavorate solo con aziende di infissi?',
-    answer: 'Si. Il posizionamento, le campagne e il follow-up sono costruiti per serramenti, porte, posa certificata, showroom e riqualificazione energetica.',
+    answer: 'Sì. Il posizionamento, le campagne e il follow-up sono costruiti per serramenti, porte, posa certificata, showroom e riqualificazione energetica.',
   },
   {
     question: 'Promettete un numero fisso di lead?',
-    answer: 'No. Promettiamo metodo, tracciamento e decisioni rapide sui dati. I lead senza qualita servono solo a riempire fogli Excel e rovinare l umore.',
+    answer: 'No. Promettiamo metodo, tracciamento e decisioni rapide sui dati. I lead senza qualità servono solo a riempire fogli Excel e rovinare l’umore.',
   },
   {
-    question: 'Serve gia un CRM?',
+    question: 'Serve già un CRM?',
     answer: 'No. Se esiste lo integriamo; se manca, partiamo con una pipeline leggera per richieste, chiamate, sopralluoghi, preventivi e vendite.',
   },
   {

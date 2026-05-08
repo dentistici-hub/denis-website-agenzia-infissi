@@ -9,6 +9,9 @@ Date: 2026-05-08
 - Baymard form design research: https://baymard.com/learn/form-design
 - Baymard input field guidance: https://baymard.com/learn/input-fields
 - Google Search Central Core Web Vitals documentation: https://developers.google.com/search/docs/appearance/core-web-vitals
+- web.dev LCP optimization: https://web.dev/articles/optimize-lcp
+- web.dev Fetch Priority: https://web.dev/articles/fetch-priority
+- Awwwards marketing category scan: https://www.awwwards.com/websites/marketing/
 - UNICMI Rapporto 2026 article: https://www.unicmi.it/in_evidenza/in_evidenza/rapporto-unicmi-2026.html
 - UNICMI Rapporto 2025 article/PDF entry: https://www.unicmi.it/index2.php?Itemid=331&id=4478&option=com_content&page=0&pop=1&task=view
 - Italian preventivo/infissi competitor scans: iSerramentisti, PreventivoInfissi, Infissi.it, GuidaEdilizia, CVL Next, InfissiRoma.
@@ -30,7 +33,7 @@ For serramentisti, the commercial problem is not raw lead volume. Search demand 
 
 ## Positioning chosen
 
-Brand: Telaio Growth.
+Brand: M2E Marketing.
 
 Offer: a 90-day pipeline system for infissi/serramenti companies:
 
@@ -52,3 +55,17 @@ Offer: a 90-day pipeline system for infissi/serramenti companies:
 - Testimonials/proof placeholders.
 - FAQ.
 - Audit request form.
+
+## Second audit pass
+
+After comparing the draft against award-style agency pages and conversion-led B2B pages, the main weakness was not visual polish. It was proof density. The first version looked credible, but still behaved like a portfolio demo: branded, attractive, and too light on operational evidence.
+
+Changes implemented:
+
+- Replaced generic demo identity with the supplied M2E Marketing PNG logo, cropped for header use.
+- Removed demo/noindex behavior so the GitHub Pages link can be sent externally.
+- Added a proof stack immediately after the hero: use cases, qualification filters and measurable operating standards.
+- Added a signature pipeline visual from traffic to ROI, so the page has a memorable system rather than only sections.
+- Added concrete audit deliverables: demand map, page diagnosis, scoring rules, WhatsApp sequence, KPI dashboard and 30-day plan.
+- Changed the form from a raw `mailto` post to a structured email builder, keeping visible labels above fields in line with Baymard form guidance.
+- Converted the generated hero to WebP, preloaded the CSS background LCP image with `fetchpriority="high"`, and added a dedicated Open Graph image.
